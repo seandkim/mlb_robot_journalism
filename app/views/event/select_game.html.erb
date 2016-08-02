@@ -1,0 +1,22 @@
+<h1>MLB Robot Journalism</h1>
+
+<p>
+  Please choose a game. Click Generate to see the article. 
+</p>
+
+<form action='show'>
+  <fieldset>
+    <legend>Games</legend>
+    <% if @games_arr.count == 0 %>
+      <p>No Games Found</p>
+    <% else %>
+        <select name="url">
+          <% (1..@games_arr.count).each do |i| %>
+            <option value=<%=@url + @dirgames_arr[i-1]%>><%=@games_arr[i-1]%></option>
+          <% end %>
+        </select>
+      <br>
+      <input type="submit" value="Generate">
+    <% end %>
+  </fieldset>
+</form>

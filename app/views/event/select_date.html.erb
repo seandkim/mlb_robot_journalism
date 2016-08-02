@@ -1,0 +1,54 @@
+<h1>MLB Robot Journalism</h1>
+
+<h2>About</h2>
+<div width=50%>
+  <p>
+    This is a program that fetches play-by-play data of a game from MLB.com 
+    and analyzes the overall trend of the game. Using the analysis, it detects 
+    the highlights of the game and generates a short article on the game chosen.
+    <br>
+    
+    <br>
+    Written by Sean D Kim from Carnegie Mellon University, under the guidance of 
+    Professor Jun-Hwan Lee and Dong-Hwan Kim from Seoul National University. 
+    Written in Ruby on Rails. 
+    <br>
+    
+    <br>
+    Please choose a date to start. 
+  </p>
+</div>
+
+<form action='event/select_game'>
+  <fieldset>
+  <legend>Date</legend>
+    <p>Year:
+    <select name="year">
+      <% [2016, 2015, 2014, 2013].each do |i| %>
+        <option><%=i%></option>
+      <% end %>
+    </select>
+    </p>
+    <p>Month:
+    <select name="month">
+    <% (1..12).each do |i| %>
+      <option><%=i%></option>
+    <% end %>
+    </select>
+    </p>
+    <p>Day:
+    <select name="day">
+    <% (1..31).each do |i| %>
+      <option><%=i%></option>
+    <% end %>
+    </select>
+    </p>
+  <input type="submit" value="Proceed">
+  </fieldset>
+  <br>
+  <br>
+</form>
+
+<footer>
+  © 2016 Sean D Kim. All Rights Reserved.
+</footer>

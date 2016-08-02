@@ -1,0 +1,117 @@
+<h1> 
+    <%= @away_team_code.upcase %> vs <%= @home_team_code.upcase %> 
+    on <%= @game_year + "/" + @game_month + "/" + @game_day%>
+</h1>
+<p> </p>
+
+<!--<br>-->
+<!--temporary string for debugging-->
+<!--url = <%= @str1 %> <br>-->
+<!--<br>-->
+
+<p>
+    Article (under-construction): <%= @bestBat["batter"] %> lead 
+    <%= if @team_won == "HOME"
+          @home_team_code.upcase
+        else
+          @away_team_code.upcase
+        end
+    %> 
+    to victory with <%= @bestBat["event"] %> at inning <%= @bestBat["inning"] %>
+</p>
+<br> 
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Away</th>
+      <th>Home</th>
+      <th>Inning</th>
+      <th>Ball Count</th>
+      <th>Runners</th>
+      <th>Pitcher</th>
+      <th>Batter</th>
+      <th>Description</th>
+      <th>Win Expectancy</th>
+      <th>Win Prob. Added</th>
+      <th>Debug</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+      
+    <!--counter for event num-->
+    <% i = 0 %>
+    
+    <!--loop through each bat event and display info-->
+    <% @game_table.each do |inning_arr| %>
+        <% inning_arr.each do |bat_hash| %>
+            <% i+=1 %>
+            <tr>
+                
+                <td> <%= i.to_s %> </td>
+                <td nowrap>
+                    <!--away team score -->
+                    [<%= @away_team_code %> <%= bat_hash["away_team_runs"] %> : 
+                </td>
+                <td>
+                    <!--home team score -->
+                    <%= bat_hash["home_team_runs"] %> <%= @home_team_code %>]
+                </td>
+                <td>
+                    <!--inning + top/bottom-->
+                    <%= bat_hash["inning"] %><%= bat_hash["half"] %>
+                </td>
+                <td nowrap>
+                    <!--ball/strike/out count-->
+                    (<%= bat_hash["b"] %>b, <%= bat_hash["s"] %>s) <%= bat_hash["o"] %>o
+                </td>
+                <td>
+                    <%=
+                        bases = ""
+                        # first base
+                        if bat_hash["b1"] == ""; bases << "_"
+                        else bases << "1"
+                        end
+                        # second base
+                        if bat_hash["b2"] == ""; bases << "_"
+                        else bases << "2"
+                        end
+                        # third base
+                        if bat_hash["b3"] == ""; bases << "_"
+                        else bases << "3"
+                        end
+                        
+                    %>
+                </td>
+                <td>
+                    <!--pitcher-->
+                    <%= bat_hash["pitcher"] %>
+                </td>
+                <td>
+                    <!--batter-->
+                    <%= bat_hash["batter"] %>
+                </td>
+                <td>
+                    <!--event:description-->
+                    <%= bat_hash["event"] %> : <%= bat_hash["des"] %>
+                </td>
+                <td>
+                    <!--win expectancy-->
+                    <%= bat_hash["WE"] %>%
+                </td>
+                
+                <td>
+                    <!--win expectancy-->
+                    <%= bat_hash["WPA"] %>
+                </td>
+                
+                <td>
+                    <%= bat_hash["str"] %>
+                </td>
+            </tr>
+            
+        <% end %>
+    <% end %>
+  </tbody>
+</table>
