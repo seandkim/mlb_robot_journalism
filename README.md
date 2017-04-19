@@ -1,28 +1,28 @@
-#MLB Robot Jounralism 
+# MLB Robot Jounralism 
 
-##About
+## About
 This is a program that fetches play-by-play data of a game from MLB.com 
 and analyzes the overall trend of the game. Using the analysis, it detects 
 the highlights of the game and generates a short article (in Korean) on the game chosen.
 
-##Authors
+## Authors
 - Written by Sean D Kim from Carnegie Mellon University 
 - Under the guidance of Professor Joon-Hwan Lee and Dong-Hwan Kim from Seoul National University
 
-##Language/Module
+## Language/Module
 - Ruby on Rails
 - Nokogiri for parsing xml file
 
-##Data Source
+## Data Source
 - All the game data from MLB.com
 - WE (Win Expectany) and WPA (Win Percentage Added) is calcuated using table 
     provided by fangraphs.com (?) This table can be found in winexp.csv
 
-##Files
+## Files
 - teamnames.csv: contains abbreviation and the code name of each team
 - winexp.csv: contains WE of a specific situation of a baseball game
 
-##Method
+## Method
 The program consist of three main parts. 
 1. Data scraping
   - All the MLB game data are organized at <http://www.mlb.com/gdcross/components/game/mlb/>
@@ -80,7 +80,7 @@ The program consist of three main parts.
   - The highlights of the game is identified by highest change in WE (greatest |WPA|)
   - The sentence is generated using algorithm developed by the research team of Professor Joon-Hwan Lee from Seoul National University
 
-##Shortcomings
+## Shortcomings
 The followings are the shortcomings that needs to be fixed. 
 - <action> elements 
     - not all events are being taken care of
